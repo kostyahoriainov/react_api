@@ -7,7 +7,7 @@ class List extends Component {
     render() {
         const props = this.props.allProps;
         return (
-            <li className={props.flag? 'none' : ''}>{props.name} : <AgeSpan age={props.age}/></li>
+            <li className={props.isShowed? '' : 'none'}>{props.name} : <AgeSpan age={props.age}/></li>
         )
     }
 }

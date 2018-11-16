@@ -15,7 +15,7 @@ class Content extends Component {
 
     getInitialState = () => {
         this.props.data.forEach((item) => {
-            item.flag = false;})
+            item.isShowed = true;})
         return this.props.data
     }
 
@@ -27,7 +27,7 @@ class Content extends Component {
         return 0;
     }
 
-    unique = (arr) => {
+    createUniqueArray = (arr) => {
         const newArr = ['All'];
         for (let i = 0; i < arr.length; i++) {
             const age = arr[i].age;
@@ -48,7 +48,7 @@ class Content extends Component {
             usersData.forEach((item) => {
                 newState.push(item);
                 if (item.age !== selectedValue) {
-                    item.flag = true;
+                    item.isShowed = false;
                 }
             })
 
@@ -70,7 +70,7 @@ class Content extends Component {
         const dataSortedName = users.sort(this.sortNameData);
         const userList = dataSortedName.map((item) => <List key={item.id} allProps={item}/>);
 
-        const selectArray = this.unique( users.sort((a,b) => a.age - b.age ));
+        const selectArray = this.createUniqueArray( users.sort((a,b) => a.age - b.age ));
         const selectList = selectArray.map((item) => <Option key={item} props={item}/>);
 
         return (
